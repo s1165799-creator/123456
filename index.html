@@ -1,0 +1,596 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Miko Hou | Educator & Researcher</title>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Google Fonts: Inter & Playfair Display -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&display=swap" rel="stylesheet">
+    
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        serif: ['Playfair Display', 'serif'],
+                    },
+                    colors: {
+                        stone: {
+                            50: '#fafaf9',
+                            100: '#f5f5f4',
+                            200: '#e7e5e4',
+                            800: '#292524',
+                            900: '#1c1917',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        /* Custom Styles for refined aesthetics */
+        body {
+            background-color: #fafaf9;
+            color: #1c1917;
+        }
+        
+        /* Smooth reveal animations */
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s cubic-bezier(0.5, 0, 0, 1);
+        }
+        
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Image hover effect */
+        .img-hover-zoom {
+            transition: transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+        .group:hover .img-hover-zoom {
+            transform: scale(1.05);
+        }
+
+        /* Hide scrollbar for cleaner look on some browsers */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #fafaf9;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #d6d3d1;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #a8a29e;
+        }
+    </style>
+</head>
+<body class="antialiased font-sans selection:bg-stone-900 selection:text-white">
+
+    <!-- Navigation -->
+    <nav class="fixed w-full z-50 top-0 transition-all duration-300 backdrop-blur-md bg-stone-50/80 border-b border-stone-200/50">
+        <div class="max-w-7xl mx-auto px-6 lg:px-12">
+            <div class="flex justify-between items-center h-20">
+                <a href="#" class="font-serif text-2xl font-semibold tracking-tight">Miko<span class="text-stone-400">.</span></a>
+                <div class="hidden md:flex items-center space-x-8 text-sm font-medium text-stone-600">
+                    <a href="#about" class="hover:text-stone-900 transition-colors" data-i18n="nav_about">About</a>
+                    <a href="#resume" class="hover:text-stone-900 transition-colors" data-i18n="nav_resume">Resume</a>
+                    <a href="#highlights" class="hover:text-stone-900 transition-colors" data-i18n="nav_highlights">Highlights</a>
+                    <a href="#contact" class="hover:text-stone-900 transition-colors" data-i18n="nav_contact">Contact</a>
+                    <button class="lang-toggle ml-4 px-3 py-1 rounded-full border border-stone-300 hover:bg-stone-200 transition-colors text-stone-800 text-xs tracking-wider">EN / 中文</button>
+                </div>
+                <!-- Mobile Menu Button -->
+                <div class="md:hidden flex items-center space-x-4">
+                    <button class="lang-toggle text-xs px-2 py-1 rounded-full border border-stone-300 hover:bg-stone-200 transition-colors text-stone-800 tracking-wider">EN / 中文</button>
+                    <button class="text-stone-900" id="mobile-menu-btn">
+                        <i data-lucide="menu" class="w-6 h-6"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <!-- Mobile Nav -->
+        <div class="md:hidden hidden bg-stone-50 border-t border-stone-200" id="mobile-menu">
+            <div class="px-6 py-4 flex flex-col space-y-4 text-center text-lg">
+                <a href="#about" class="text-stone-600 hover:text-stone-900" data-i18n="nav_about">About</a>
+                <a href="#resume" class="text-stone-600 hover:text-stone-900" data-i18n="nav_resume">Resume</a>
+                <a href="#highlights" class="text-stone-600 hover:text-stone-900" data-i18n="nav_highlights">Highlights</a>
+                <a href="#contact" class="text-stone-600 hover:text-stone-900" data-i18n="nav_contact">Contact</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="relative min-h-screen flex items-center justify-center pt-20 overflow-hidden">
+        <!-- Subtle background element -->
+        <div class="absolute top-1/4 -left-20 w-96 h-96 bg-stone-200 rounded-full mix-blend-multiply filter blur-3xl opacity-50"></div>
+        <div class="absolute bottom-1/4 -right-20 w-96 h-96 bg-stone-200 rounded-full mix-blend-multiply filter blur-3xl opacity-50"></div>
+        
+        <!-- Decorative floating images -->
+        <div class="absolute top-20 left-10 opacity-20 pointer-events-none">
+            <img src="https://images.unsplash.com/photo-1523580494863-70336c0040f1?q=80&w=2574&auto=format&fit=crop" alt="Education" class="w-24 h-24 object-cover rounded-lg transform rotate-12" />
+        </div>
+        <div class="absolute top-40 right-10 opacity-20 pointer-events-none">
+            <img src="https://images.unsplash.com/photo-1543269865-cbf427efffcc?q=80&w=2574&auto=format&fit=crop" alt="Books" class="w-20 h-20 object-cover rounded-lg transform -rotate-12" />
+        </div>
+        <div class="absolute bottom-20 left-1/4 opacity-15 pointer-events-none">
+            <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=2574&auto=format&fit=crop" alt="Graduation" class="w-16 h-16 object-cover rounded-full" />
+        </div>
+        
+        <div class="max-w-5xl mx-auto px-6 lg:px-12 relative z-10 text-center">
+            <p class="text-sm font-medium tracking-widest text-stone-500 uppercase mb-6 reveal" data-i18n="hero_tag">International Chinese Educator</p>
+            <h1 class="font-serif text-5xl md:text-7xl lg:text-8xl font-medium leading-tight mb-8 text-stone-900 reveal" style="transition-delay: 100ms;" data-i18n="hero_title">
+                Engaging global <br class="hidden md:block" />
+                <span class="italic text-stone-500">learners</span> with purpose.
+            </h1>
+            <p class="text-lg md:text-xl text-stone-600 max-w-2xl mx-auto font-light leading-relaxed mb-12 reveal" style="transition-delay: 200ms;" data-i18n="hero_desc">
+                Specializing in IB MYP/DP curriculum design and literature analysis, bridging cultural gaps through innovative and personalized education.
+            </p>
+            <div class="reveal" style="transition-delay: 300ms;">
+                <a href="#resume" class="inline-flex items-center justify-center px-8 py-4 text-sm font-medium text-white bg-stone-900 rounded-full hover:bg-stone-800 transition-all duration-300 hover:shadow-lg hover:-translate-y-1">
+                    <span data-i18n="hero_btn">Explore My Journey</span>
+                    <i data-lucide="arrow-down-right" class="ml-2 w-4 h-4"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- About / Personal Info Section -->
+    <section id="about" class="py-24 bg-stone-100">
+        <div class="max-w-7xl mx-auto px-6 lg:px-12">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-16 items-center">
+                <!-- Profile Photo Area -->
+                <div class="lg:col-span-5 reveal">
+                    <div class="relative">
+                        <!-- Replace this src with your actual portrait photo -->
+                        <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?q=80&w=2576&auto=format&fit=crop" alt="Miko Hou Portrait" class="rounded-2xl w-full h-auto object-cover shadow-xl aspect-[3/4]" />
+                        <div class="absolute -bottom-6 -right-6 bg-white p-6 rounded-xl shadow-lg border border-stone-100 hidden md:block">
+                            <p class="font-serif text-2xl font-medium text-stone-900">Hou Min <span class="text-stone-400 text-lg">(Miko)</span></p>
+                            <p class="text-stone-500 text-sm mt-1" data-i18n="about_role">Doctoral Candidate & Educator</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Personal Info & Bio -->
+                <div class="lg:col-span-7 reveal">
+                    <h2 class="font-serif text-4xl md:text-5xl font-medium mb-8 text-stone-900" data-i18n="about_title">The philosophy behind my teaching.</h2>
+                    <div class="space-y-6 text-stone-600 font-light text-lg leading-relaxed mb-10">
+                        <p data-i18n="about_p1">
+                            I believe that impactful education empowers students for global citizenship. With extensive experience teaching IBDP and IBMYP in China and Poland, I focus on integrating technology to support personalized learning and critical analysis.
+                        </p>
+                        <p data-i18n="about_p2">
+                            Currently pursuing my Doctorate in Education at the Education University of Hong Kong, I am deeply committed to researching Chinese language education in the new media era, transforming theoretical insights into practical, engaging classroom realities.
+                        </p>
+                    </div>
+
+                    <!-- Personal Information Grid -->
+                    <div class="bg-white p-8 rounded-2xl shadow-sm border border-stone-200">
+                        <h3 class="font-serif text-2xl font-medium text-stone-900 mb-6" data-i18n="about_info_title">Personal Information</h3>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <div class="flex items-start space-x-3">
+                                <i data-lucide="map-pin" class="w-5 h-5 text-stone-400 mt-0.5"></i>
+                                <div>
+                                    <p class="text-sm font-medium text-stone-900" data-i18n="info_loc_title">Location</p>
+                                    <p class="text-sm text-stone-600" data-i18n="info_loc_val">Hong Kong</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start space-x-3">
+                                <i data-lucide="mail" class="w-5 h-5 text-stone-400 mt-0.5"></i>
+                                <div>
+                                    <p class="text-sm font-medium text-stone-900" data-i18n="info_email_title">Email</p>
+                                    <a href="mailto:minhou678@gmail.com" class="text-sm text-stone-600 hover:text-stone-900 transition-colors">minhou678@gmail.com</a>
+                                </div>
+                            </div>
+                            <div class="flex items-start space-x-3">
+                                <i data-lucide="phone" class="w-5 h-5 text-stone-400 mt-0.5"></i>
+                                <div>
+                                    <p class="text-sm font-medium text-stone-900" data-i18n="info_phone_title">Phone</p>
+                                    <p class="text-sm text-stone-600">+852 8495 5160</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start space-x-3">
+                                <i data-lucide="languages" class="w-5 h-5 text-stone-400 mt-0.5"></i>
+                                <div>
+                                    <p class="text-sm font-medium text-stone-900" data-i18n="info_lang_title">Languages</p>
+                                    <p class="text-sm text-stone-600" data-i18n="info_lang_val">Mandarin (Native), English (Fluent)</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Resume Section (Education & Experience Timeline) -->
+    <section id="resume" class="py-32">
+        <div class="max-w-7xl mx-auto px-6 lg:px-12">
+            <div class="mb-20 text-center reveal">
+                <h2 class="font-serif text-4xl md:text-5xl font-medium text-stone-900" data-i18n="resume_title">Education & Experience</h2>
+                <p class="text-stone-500 mt-4 text-lg" data-i18n="resume_desc">A chronological journey of continuous learning and international teaching.</p>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24">
+                
+                <!-- Education Column -->
+                <div class="reveal">
+                    <div class="flex items-center space-x-3 mb-10">
+                        <div class="p-3 bg-stone-100 rounded-lg text-stone-700">
+                            <i data-lucide="graduation-cap" class="w-6 h-6"></i>
+                        </div>
+                        <h3 class="font-serif text-3xl font-medium text-stone-900" data-i18n="edu_title">Education Background</h3>
+                    </div>
+
+                    <!-- Timeline -->
+                    <div class="relative border-l border-stone-200 pl-8 ml-4 space-y-12">
+                        <!-- EdUHK -->
+                        <div class="relative group">
+                            <div class="absolute -left-[41px] top-1.5 w-4 h-4 rounded-full bg-stone-300 group-hover:bg-stone-900 border-4 border-white transition-colors duration-300"></div>
+                            <p class="text-sm font-medium tracking-wider text-stone-500 uppercase mb-2" data-i18n="edu1_date">2025.08 - Present</p>
+                            <h4 class="text-xl font-medium text-stone-900 mb-1" data-i18n="edu1_degree">Doctor in Education (Chinese Education)</h4>
+                            <p class="text-stone-900 font-serif italic mb-3" data-i18n="edu1_school">Education University of Hong Kong</p>
+                            <p class="text-stone-600 font-light text-sm leading-relaxed" data-i18n="edu1_desc">Core Courses: Chinese teaching theory and practice, research methodology, etc.</p>
+                        </div>
+
+                        <!-- ECNU -->
+                        <div class="relative group">
+                            <div class="absolute -left-[41px] top-1.5 w-4 h-4 rounded-full bg-stone-300 group-hover:bg-stone-900 border-4 border-white transition-colors duration-300"></div>
+                            <p class="text-sm font-medium tracking-wider text-stone-500 uppercase mb-2" data-i18n="edu2_date">2015.09 - 2018.06</p>
+                            <h4 class="text-xl font-medium text-stone-900 mb-1" data-i18n="edu2_degree">MA in Teaching Chinese</h4>
+                            <p class="text-stone-900 font-serif italic mb-3" data-i18n="edu2_school">East China Normal University</p>
+                            <p class="text-stone-600 font-light text-sm leading-relaxed" data-i18n="edu2_desc">Core Courses: Classroom management, language elements analysis, intercultural communication.</p>
+                        </div>
+
+                        <!-- SDUT -->
+                        <div class="relative group">
+                            <div class="absolute -left-[41px] top-1.5 w-4 h-4 rounded-full bg-stone-300 group-hover:bg-stone-900 border-4 border-white transition-colors duration-300"></div>
+                            <p class="text-sm font-medium tracking-wider text-stone-500 uppercase mb-2" data-i18n="edu3_date">2011.09 - 2015.06</p>
+                            <h4 class="text-xl font-medium text-stone-900 mb-1" data-i18n="edu3_degree">BA in Chinese Literature / BS in Accounting</h4>
+                            <p class="text-stone-900 font-serif italic mb-3" data-i18n="edu3_school">Shandong University of Technology</p>
+                            <p class="text-stone-600 font-light text-sm leading-relaxed" data-i18n="edu3_desc">Core Courses: Linguistics, pedagogy, literature, economics, financial analysis, management.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Experience Column -->
+                <div class="reveal" style="transition-delay: 200ms;">
+                    <div class="flex items-center space-x-3 mb-10">
+                        <div class="p-3 bg-stone-100 rounded-lg text-stone-700">
+                            <i data-lucide="briefcase" class="w-6 h-6"></i>
+                        </div>
+                        <h3 class="font-serif text-3xl font-medium text-stone-900" data-i18n="exp_title">Teaching Experience</h3>
+                    </div>
+
+                    <!-- Timeline -->
+                    <div class="relative border-l border-stone-200 pl-8 ml-4 space-y-12">
+                        <!-- CIS -->
+                        <div class="relative group">
+                            <div class="absolute -left-[41px] top-1.5 w-4 h-4 rounded-full bg-stone-300 group-hover:bg-stone-900 border-4 border-white transition-colors duration-300"></div>
+                            <p class="text-sm font-medium tracking-wider text-stone-500 uppercase mb-2" data-i18n="exp1_date">2018.08 - Present</p>
+                            <h4 class="text-xl font-medium text-stone-900 mb-1" data-i18n="exp1_role">IBMYP Language Acquisition & IBDP Chinese A Teacher</h4>
+                            <p class="text-stone-900 font-serif italic mb-3" data-i18n="exp1_school">Canadian International School of Hefei</p>
+                            <ul class="text-stone-600 font-light text-sm leading-relaxed list-disc ml-4 space-y-1">
+                                <li data-i18n="exp1_desc1">Responsible for curriculum system construction.</li>
+                                <li data-i18n="exp1_desc2">Effectively helping students prepare fully for university studies.</li>
+                            </ul>
+                        </div>
+
+                        <!-- AIS Warsaw -->
+                        <div class="relative group">
+                            <div class="absolute -left-[41px] top-1.5 w-4 h-4 rounded-full bg-stone-300 group-hover:bg-stone-900 border-4 border-white transition-colors duration-300"></div>
+                            <p class="text-sm font-medium tracking-wider text-stone-500 uppercase mb-2" data-i18n="exp2_date">2017.04 - 2018.02</p>
+                            <h4 class="text-xl font-medium text-stone-900 mb-1" data-i18n="exp2_role">IBDP Chinese A: Literature Teacher (HL)</h4>
+                            <p class="text-stone-900 font-serif italic mb-3" data-i18n="exp2_school">American International School of Warsaw</p>
+                            <ul class="text-stone-600 font-light text-sm leading-relaxed list-disc ml-4 space-y-1">
+                                <li data-i18n="exp2_desc1">Taught higher-level literature to native speakers, focusing on critical analysis and writing.</li>
+                                <li data-i18n="exp2_desc2">Guided students in textual interpretation and extended essays.</li>
+                            </ul>
+                        </div>
+
+                        <!-- Vistula & ECNU -->
+                        <div class="relative group">
+                            <div class="absolute -left-[41px] top-1.5 w-4 h-4 rounded-full bg-stone-300 group-hover:bg-stone-900 border-4 border-white transition-colors duration-300"></div>
+                            <p class="text-sm font-medium tracking-wider text-stone-500 uppercase mb-2" data-i18n="exp3_date">2017.02 - 2018.02</p>
+                            <h4 class="text-xl font-medium text-stone-900 mb-1" data-i18n="exp3_role">Chinese Language Instructor</h4>
+                            <p class="text-stone-900 font-serif italic mb-3" data-i18n="exp3_school">Vistula University & East China Normal University</p>
+                            <ul class="text-stone-600 font-light text-sm leading-relaxed list-disc ml-4 space-y-1">
+                                <li data-i18n="exp3_desc1">Taught diverse learners from beginner to advanced levels.</li>
+                                <li data-i18n="exp3_desc2">Coordinated cultural programs for Korean university students in Shanghai.</li>
+                            </ul>
+                        </div>
+
+                        <!-- CIEE -->
+                        <div class="relative group">
+                            <div class="absolute -left-[41px] top-1.5 w-4 h-4 rounded-full bg-stone-300 group-hover:bg-stone-900 border-4 border-white transition-colors duration-300"></div>
+                            <p class="text-sm font-medium tracking-wider text-stone-500 uppercase mb-2" data-i18n="exp4_date">2016.02 - 2016.08</p>
+                            <h4 class="text-xl font-medium text-stone-900 mb-1" data-i18n="exp4_role">Chinese Teacher (Advanced Level)</h4>
+                            <p class="text-stone-900 font-serif italic mb-3" data-i18n="exp4_school">CIEE, Shanghai</p>
+                            <ul class="text-stone-600 font-light text-sm leading-relaxed list-disc ml-4 space-y-1">
+                                <li data-i18n="exp4_desc1">Taught American university students.</li>
+                                <li data-i18n="exp4_desc2">Awarded Outstanding Teacher (Summer 2016).</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Highlights & Skills Section -->
+    <section id="highlights" class="py-32 bg-stone-900 text-stone-50">
+        <div class="max-w-7xl mx-auto px-6 lg:px-12">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-20">
+                
+                <!-- Highlights -->
+                <div class="reveal">
+                    <h2 class="font-serif text-4xl font-medium mb-10" data-i18n="high_title">Academic & Professional Highlights</h2>
+                    <ul class="space-y-6">
+                        <li class="flex items-start space-x-4">
+                            <i data-lucide="mic" class="w-6 h-6 text-stone-400 mt-1 shrink-0"></i>
+                            <div>
+                                <p class="font-medium text-lg" data-i18n="high1_title">Invited Speaker</p>
+                                <p class="text-stone-400 font-light text-sm mt-1" data-i18n="high1_desc">2025 ACAMIS International Conference on Chinese Language Education</p>
+                            </div>
+                        </li>
+                        <li class="flex items-start space-x-4">
+                            <i data-lucide="book-open" class="w-6 h-6 text-stone-400 mt-1 shrink-0"></i>
+                            <div>
+                                <p class="font-medium text-lg" data-i18n="high2_title">Published Research (1st Prize)</p>
+                                <p class="text-stone-400 font-light text-sm mt-1" data-i18n="high2_desc">"Rethinking Chinese Language Education in the New Media Era" (2022)</p>
+                            </div>
+                        </li>
+                        <li class="flex items-start space-x-4">
+                            <i data-lucide="award" class="w-6 h-6 text-stone-400 mt-1 shrink-0"></i>
+                            <div>
+                                <p class="font-medium text-lg" data-i18n="high3_title">Judge</p>
+                                <p class="text-stone-400 font-light text-sm mt-1" data-i18n="high3_desc">International Youth Chinese Writing Competition (2022-2025) & "Chinese Bridge" World Middle School Chinese Competition, Poland (2017)</p>
+                            </div>
+                        </li>
+                        <li class="flex items-start space-x-4">
+                            <i data-lucide="star" class="w-6 h-6 text-stone-400 mt-1 shrink-0"></i>
+                            <div>
+                                <p class="font-medium text-lg" data-i18n="high4_title">Outstanding Mentor Teacher</p>
+                                <p class="text-stone-400 font-light text-sm mt-1" data-i18n="high4_desc">"Zongheng Cup" Chinese Debate Competition (2019)</p>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Skills & Certifications -->
+                <div class="reveal" style="transition-delay: 200ms;">
+                    <h2 class="font-serif text-4xl font-medium mb-10" data-i18n="skills_title">Certifications & Skills</h2>
+                    
+                    <div class="space-y-8">
+                        <div>
+                            <h4 class="text-stone-400 text-sm tracking-widest uppercase mb-4" data-i18n="cert_label">Certifications</h4>
+                            <div class="flex flex-wrap gap-3">
+                                <span class="px-4 py-2 bg-stone-800 rounded-full text-sm font-medium border border-stone-700" data-i18n="cert1">Secondary Chinese Teacher Qualification</span>
+                                <span class="px-4 py-2 bg-stone-800 rounded-full text-sm font-medium border border-stone-700" data-i18n="cert2">International Chinese Teacher</span>
+                                <span class="px-4 py-2 bg-stone-800 rounded-full text-sm font-medium border border-stone-700" data-i18n="cert3">Advanced Psychological Counselor</span>
+                                <span class="px-4 py-2 bg-stone-800 rounded-full text-sm font-medium border border-stone-700" data-i18n="cert4">Level 5 Tea Art Practitioner</span>
+                            </div>
+                        </div>
+
+                        <div>
+                            <h4 class="text-stone-400 text-sm tracking-widest uppercase mb-4" data-i18n="tools_label">Tools & Technology</h4>
+                            <div class="flex flex-wrap gap-3">
+                                <span class="px-4 py-2 bg-stone-800 rounded-full text-sm font-medium border border-stone-700">Google Workspace</span>
+                                <span class="px-4 py-2 bg-stone-800 rounded-full text-sm font-medium border border-stone-700">LMS Integration</span>
+                                <span class="px-4 py-2 bg-stone-800 rounded-full text-sm font-medium border border-stone-700">Kahoot & Padlet</span>
+                                <span class="px-4 py-2 bg-stone-800 rounded-full text-sm font-medium border border-stone-700">Nearpod</span>
+                                <span class="px-4 py-2 bg-stone-800 rounded-full text-sm font-medium border border-stone-700" data-i18n="cert_comp">National Computer Level 2</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-32 bg-stone-900 text-stone-50">
+        <div class="max-w-7xl mx-auto px-6 lg:px-12">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-16">
+                <div class="reveal">
+                    <h2 class="font-serif text-5xl md:text-7xl font-medium mb-6" data-i18n="contact_title">Let's connect.</h2>
+                    <p class="text-stone-400 text-lg md:text-xl font-light max-w-md mb-12" data-i18n="contact_desc">
+                        Based in Hong Kong and open to meaningful educational opportunities, research collaborations, and discussions.
+                    </p>
+                    <a href="mailto:minhou678@gmail.com" class="inline-block font-serif text-3xl md:text-4xl text-white hover:text-stone-400 transition-colors border-b-2 border-transparent hover:border-stone-400 pb-2 break-all">
+                        minhou678@gmail.com
+                    </a>
+                    <p class="text-stone-400 mt-6 text-lg tracking-wide">+852 8495 5160</p>
+                </div>
+                
+                <div class="flex flex-col justify-between lg:items-end reveal" style="transition-delay: 200ms;">
+                    <div class="w-full max-w-md space-y-6">
+                        <!-- Visual Contact Form (Functionless for demo) -->
+                        <div>
+                            <label class="block text-sm font-medium text-stone-400 mb-2" data-i18n="form_name">Name</label>
+                            <input type="text" class="w-full bg-stone-800 border-none rounded-lg px-4 py-3 text-stone-100 focus:ring-2 focus:ring-stone-500 outline-none transition-shadow" placeholder="Jane Doe" data-i18n-placeholder="placeholder_name">
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-stone-400 mb-2" data-i18n="form_email">Email</label>
+                            <input type="email" class="w-full bg-stone-800 border-none rounded-lg px-4 py-3 text-stone-100 focus:ring-2 focus:ring-stone-500 outline-none transition-shadow" placeholder="jane@example.com" data-i18n-placeholder="placeholder_email">
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-stone-400 mb-2" data-i18n="form_msg">Message</label>
+                            <textarea rows="4" class="w-full bg-stone-800 border-none rounded-lg px-4 py-3 text-stone-100 focus:ring-2 focus:ring-stone-500 outline-none transition-shadow resize-none" placeholder="Tell me about your project..." data-i18n-placeholder="placeholder_msg"></textarea>
+                        </div>
+                        <button class="w-full bg-stone-50 text-stone-900 font-medium py-4 rounded-lg hover:bg-stone-200 transition-colors" data-i18n="form_btn">
+                            Send Message
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-stone-900 border-t border-stone-800 py-8 text-sm">
+        <div class="max-w-7xl mx-auto px-6 lg:px-12 flex flex-col md:flex-row justify-between items-center text-stone-500">
+            <p data-i18n="footer_copy">&copy; 2026 Miko Hou. All rights reserved.</p>
+            <div class="flex space-x-6 mt-4 md:mt-0">
+                <a href="#" class="hover:text-stone-300 transition-colors">LinkedIn</a>
+                <a href="#" class="hover:text-stone-300 transition-colors">Google Scholar</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script>
+        // Initialize Lucide Icons
+        lucide.createIcons();
+
+        // Mobile Menu Toggle
+        const btn = document.getElementById('mobile-menu-btn');
+        const menu = document.getElementById('mobile-menu');
+
+        btn.addEventListener('click', () => {
+            menu.classList.toggle('hidden');
+        });
+
+        // Scroll Reveal Animation Logic
+        function reveal() {
+            var reveals = document.querySelectorAll(".reveal");
+            for (var i = 0; i < reveals.length; i++) {
+                var windowHeight = window.innerHeight;
+                var elementTop = reveals[i].getBoundingClientRect().top;
+                var elementVisible = 100; // Trigger point
+                
+                if (elementTop < windowHeight - elementVisible) {
+                    reveals[i].classList.add("active");
+                }
+            }
+        }
+
+        // Run on load and scroll
+        window.addEventListener("scroll", reveal);
+        // Trigger once on page load to show above-the-fold content
+        setTimeout(reveal, 100);
+
+        // Language Toggle Logic
+        const translations = {
+            en: {
+                nav_about: "About", nav_resume: "Resume", nav_highlights: "Highlights", nav_contact: "Contact",
+                hero_tag: "International Chinese Educator",
+                hero_title: "Engaging global <br class=\"hidden md:block\" />\n<span class=\"italic text-stone-500\">learners</span> with purpose.",
+                hero_desc: "Specializing in IB MYP/DP curriculum design and literature analysis, bridging cultural gaps through innovative and personalized education.",
+                hero_btn: "Explore My Journey",
+                about_role: "Doctoral Candidate & Educator",
+                about_title: "The philosophy behind my teaching.",
+                about_p1: "I believe that impactful education empowers students for global citizenship. With extensive experience teaching IBDP and IBMYP in China and Poland, I focus on integrating technology to support personalized learning and critical analysis.",
+                about_p2: "Currently pursuing my Doctorate in Education at the Education University of Hong Kong, I am deeply committed to researching Chinese language education in the new media era, transforming theoretical insights into practical, engaging classroom realities.",
+                about_info_title: "Personal Information",
+                info_loc_title: "Location", info_loc_val: "Hong Kong",
+                info_email_title: "Email",
+                info_phone_title: "Phone",
+                info_lang_title: "Languages", info_lang_val: "Mandarin (Native), English (Fluent, CET-6)",
+                resume_title: "Education & Experience", resume_desc: "A chronological journey of continuous learning and international teaching.",
+                edu_title: "Education Background",
+                edu1_date: "2025.08 - Present", edu1_degree: "Doctor in Education (Chinese Education)", edu1_school: "Education University of Hong Kong", edu1_desc: "Core Courses: Chinese teaching theory and practice, research methodology, etc.",
+                edu2_date: "2015.09 - 2018.06", edu2_degree: "MA in Teaching Chinese to Speakers of Other Languages", edu2_school: "East China Normal University", edu2_desc: "Core Courses: Classroom management, language elements analysis, intercultural communication.",
+                edu3_date: "2011.09 - 2015.06", edu3_degree: "BA in Chinese Literature / BS in Accounting", edu3_school: "Shandong University of Technology", edu3_desc: "Core Courses: Linguistics, pedagogy, literature, economics, financial analysis, management.",
+                exp_title: "Teaching Experience",
+                exp1_date: "2018.08 - Present", exp1_role: "IBMYP Language Acquisition & IBDP Chinese A Teacher", exp1_school: "Canadian International School of Hefei", exp1_desc1: "Responsible for curriculum system construction.", exp1_desc2: "Effectively helping students prepare fully for university studies.",
+                exp2_date: "2017.04 - 2018.02", exp2_role: "IBDP Chinese A: Literature Teacher (HL)", exp2_school: "American International School of Warsaw", exp2_desc1: "Taught higher-level literature to native speakers, focusing on critical analysis and writing.", exp2_desc2: "Guided students in textual interpretation and extended essays.",
+                exp3_date: "2017.02 - 2018.02", exp3_role: "Chinese Language Instructor", exp3_school: "Vistula University & East China Normal University", exp3_desc1: "Taught diverse learners from beginner to advanced levels.", exp3_desc2: "Coordinated cultural programs for Korean university students in Shanghai.",
+                exp4_date: "2016.02 - 2016.08", exp4_role: "Chinese Teacher (Advanced Level)", exp4_school: "CIEE, Shanghai", exp4_desc1: "Taught American university students.", exp4_desc2: "Awarded Outstanding Teacher (Summer 2016).",
+                high_title: "Academic & Professional Highlights",
+                high1_title: "Invited Speaker", high1_desc: "2025 ACAMIS International Conference on Chinese Language Education",
+                high2_title: "Published Research (1st Prize)", high2_desc: "\"Rethinking Chinese Language Education in the New Media Era\" (2022)",
+                high3_title: "Judge", high3_desc: "International Youth Chinese Writing Competition (2022-2025) & \"Chinese Bridge\" World Middle School Chinese Competition, Poland (2017)",
+                high4_title: "Outstanding Mentor Teacher", high4_desc: "\"Zongheng Cup\" Chinese Debate Competition (2019)",
+                skills_title: "Certifications & Skills", cert_label: "Certifications", tools_label: "Tools & Technology",
+                cert1: "Secondary Chinese Teacher Qualification (China)", cert2: "International Chinese Teacher Certificate", cert3: "Advanced Psychological Counselor", cert4: "National Level 5 Tea Art Practitioner", cert_comp: "National Computer Level 2",
+                contact_title: "Let's connect.", contact_desc: "Based in Hong Kong and open to meaningful educational opportunities, research collaborations, and discussions.",
+                form_name: "Name", form_email: "Email", form_msg: "Message", form_btn: "Send Message",
+                placeholder_name: "Jane Doe", placeholder_email: "jane@example.com", placeholder_msg: "Tell me about your project...",
+                footer_copy: "&copy; 2026 Miko Hou. All rights reserved."
+            },
+            zh: {
+                nav_about: "關於我", nav_resume: "教育與經歷", nav_highlights: "專業亮點", nav_contact: "聯絡我",
+                hero_tag: "國際中文教育者",
+                hero_title: "以目標為導向，<br class=\"hidden md:block\" />\n啟發全球<span class=\"italic text-stone-500\">學習者</span>。",
+                hero_desc: "專注於 IB MYP/DP 課程設計與文學分析，透過創新與個性化教育跨越文化界限。",
+                hero_btn: "探索我的旅程",
+                about_role: "教育學博士候選人 & 教育者",
+                about_title: "我的教學理念",
+                about_p1: "我深信具影響力的教育能賦予學生全球公民的素養。憑藉在中國和波蘭教授 IBDP 和 IBMYP 的豐富經驗，我專注於整合教育科技，以支持個性化學習與批判性分析。",
+                about_p2: "目前我正在香港教育大學攻讀教育學博士學位，致力於新媒體時代中文教育的研究，將理論見解轉化為生動實用的課堂實踐。",
+                about_info_title: "個人資訊",
+                info_loc_title: "所在地", info_loc_val: "香港",
+                info_email_title: "電子郵件",
+                info_phone_title: "聯絡電話",
+                info_lang_title: "語言能力", info_lang_val: "母語: 中文 | 英語: 流利 (CET-6)",
+                resume_title: "教育背景與專業經歷", resume_desc: "國際教學與持續學習的發展歷程。",
+                edu_title: "教育背景",
+                edu1_date: "2025.08 - 至今", edu1_degree: "教育學博士 (中文教育方向)", edu1_school: "香港教育大學", edu1_desc: "主修課程：中文教學理論與實踐、研究方法論等",
+                edu2_date: "2015.09 - 2018.06", edu2_degree: "漢語國際教育碩士", edu2_school: "華東師範大學", edu2_desc: "主修課程：課堂管理、語言要素分析、中外文化比較、跨文化交際等",
+                edu3_date: "2011.09 - 2015.06", edu3_degree: "漢語言文學 / 會計學 (雙學位)", edu3_school: "山東理工大學", edu3_desc: "主修課程：語言學、教育學、中外文學、經濟學、財務分析、管理學等",
+                exp_title: "專業實踐",
+                exp1_date: "2018.08 - 至今", exp1_role: "IBMYP 語言習得 & IBDP 中文A語言與文學教師", exp1_school: "合肥加拿大外籍人員子女學校", exp1_desc1: "負責課程體系的建設。", exp1_desc2: "有效地幫助學生為大學深造做好充分準備。",
+                exp2_date: "2017.04 - 2018.02", exp2_role: "IBDP 中文文學教師 (高級課程)", exp2_school: "華沙美國國際學校", exp2_desc1: "掌握了關於IB中文課程的相關知識，為母語學生教授高級文學。", exp2_desc2: "指導學生進行文本解讀和拓展論文寫作。",
+                exp3_date: "2017.02 - 2018.02", exp3_role: "漢語教師", exp3_school: "波蘭維斯瓦大學 & 華東師範大學", exp3_desc1: "教授從初級到高級的不同水準學生。", exp3_desc2: "在上海為韓國仁川大學專案協調文化活動。",
+                exp4_date: "2016.02 - 2016.08", exp4_role: "高級漢語教師", exp4_school: "CIEE (上海)", exp4_desc1: "教授美國大學生。", exp4_desc2: "獲評優秀教師 (2016年夏季)。",
+                high_title: "學術與專業亮點",
+                high1_title: "特邀演講嘉賓", high1_desc: "2025 ACAMIS 國際中文教育大會",
+                high2_title: "研究論文一等獎", high2_desc: "《新媒體時代中文教育的再思考》 (2022)",
+                high3_title: "大賽評委", high3_desc: "國際青少年中文寫作比賽評委 (2022-2025) & 波蘭“漢語橋”世界中學生中文比賽評委 (2017)",
+                high4_title: "優秀指導教師", high4_desc: "“縱橫杯”中文辯論賽 (2019)",
+                skills_title: "資格證書與技能", cert_label: "資格證書", tools_label: "技術與工具",
+                cert1: "中國中學語文教師資格證", cert2: "國際中文教師證書", cert3: "高級心理諮詢師", cert4: "國家五級茶藝師", cert_comp: "國家計算機二級",
+                contact_title: "保持聯繫", contact_desc: "常駐香港，期待有意義的教育機會、研究合作與交流探討。",
+                form_name: "姓名", form_email: "電子郵件", form_msg: "訊息", form_btn: "發送訊息",
+                placeholder_name: "王小明", placeholder_email: "wang@example.com", placeholder_msg: "請告訴我您的需求...",
+                footer_copy: "&copy; 2026 Miko Hou. 版權所有。"
+            }
+        };
+
+        let currentLang = 'en';
+        
+        function updateLanguage() {
+            document.querySelectorAll('[data-i18n]').forEach(el => {
+                const key = el.getAttribute('data-i18n');
+                if (translations[currentLang][key]) {
+                    el.innerHTML = translations[currentLang][key];
+                }
+            });
+            
+            document.querySelectorAll('[data-i18n-placeholder]').forEach(el => {
+                const key = el.getAttribute('data-i18n-placeholder');
+                if (translations[currentLang][key]) {
+                    el.placeholder = translations[currentLang][key];
+                }
+            });
+            
+            // Re-initialize lucide icons if they were affected by innerHTML replacement
+            lucide.createIcons();
+        }
+
+        document.querySelectorAll('.lang-toggle').forEach(btn => {
+            btn.addEventListener('click', () => {
+                currentLang = currentLang === 'en' ? 'zh' : 'en';
+                updateLanguage();
+            });
+        });
+    </script>
+</body>
+</html>
